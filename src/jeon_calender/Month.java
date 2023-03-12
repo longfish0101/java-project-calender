@@ -18,16 +18,20 @@ public class Month {
 	public static void print(int repeat) {
 		for(int i=0; i<repeat; i++) {
 			int count=0;
-			System.out.println("월을 입력(1~12)");
 			while(count == 0) {
+			System.out.println("월을 입력(1~12\n>");
 			Scanner scanner = new Scanner(System.in);
 			int input = scanner.nextInt();
-				if (input >= 1 && input <= 12) {
-					System.out.printf("%d월은 총 %d일로 구성되어 있습니다\n", input, maxDay(input));
-					count++;
-				} else {
-				System.out.println("1~12만 입력");
-				}
+			if (input == -1) {
+				System.out.print("good bye");
+				break;
+			}
+			if (input >= 1 && input <= 12) {
+				System.out.printf("%d월은 총 %d일로 구성되어 있습니다\n", input, maxDay(input));
+				count++;
+			} else {
+			System.out.println("1~12만 입력");
+			}	
 			}
 		}
 	}

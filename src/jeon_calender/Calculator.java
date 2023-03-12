@@ -1,38 +1,40 @@
 package jeon_calender;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Calculator {
-	
+	public static void printCal() {
+		int[] month = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		while (true) {
+			System.out.println("월을 입력하세요.\n>");
+			Scanner scanner = new Scanner(System.in);
+			int input = scanner.nextInt();
+			if (input >= 1 && input <= 12) {
+				int n = month[input - 1];
+				int[] days = new int[n];
+				for (int i = 0; i < n; i++) {
+					days[i] = i + 1;
+				}
+				System.out.println("  일 월  화  수 목  금 토");
+				for (int i = 0; i < days.length; i++) {
+					if ((i + 1) % 7 == 0) {
+						System.out.printf("%3d\n", days[i]);
+					} else {
+						System.out.printf("%3d", days[i]);
+					}
+				}
+				System.out.println();
+			} else if (input == -1) {
+				System.out.println("bye");
+				break;
+			} else {
+				System.out.println("1~12만 입력");
+				continue;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
-		print(calculator(28));
-	}
-	
-	public static int[] calculator(int n) {
-		int[] month = new int[n];
-		for(int i=0; i<n; i++) {
-			month[i] = i+1;
-		}
-		return month;
-	}
-	
-	public static void print(int[] m) {
-		int len = m.length;
-		String[] day = {"일","월","화","수","목","금","토"};
-		for(int i=0; i<day.length; i++) {
-			System.out.printf("%3s",day[i]);
-			if(i == day.length-1) {
-				System.out.printf("%n");
-			}
-		}
-		for(int i=0; i<len; i++) {
-			if((i+1)%7 == 0) {
-				System.out.printf("%3d", m[i]);
-				System.out.printf("%n");
-			}
-			else {
-				System.out.printf("%3d",m[i]);
-			}
-		}
+		printCal();
 	}
 }
